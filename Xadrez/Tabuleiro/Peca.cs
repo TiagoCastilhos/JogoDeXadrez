@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Xadrez.Tabuleiro {
-    class Peca {
+    abstract class Peca {
 
         public Posicao Posicao;
         public Cor Cor { get; protected set; }
@@ -26,6 +26,7 @@ namespace Xadrez.Tabuleiro {
             qteMovimentos++;
         }
 
-
+        public abstract bool[,] movimentosPossiveis();
+        
     }
 }
