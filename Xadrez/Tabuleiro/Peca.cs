@@ -28,5 +28,20 @@ namespace Xadrez.Tabuleiro {
 
         public abstract bool[,] movimentosPossiveis();
         
+        public bool existeMovimentosPossiveis()
+        {
+            bool[,] mat = movimentosPossiveis();
+            for (int i = 0; i < Tabuleiro.linhas; i++)
+            {
+                for(int j = 0; i < Tabuleiro.colunas; j++)
+                {
+                    if (mat[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 }

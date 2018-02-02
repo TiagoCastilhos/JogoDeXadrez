@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xadrez.Tabuleiro;
 namespace Xadrez.xadrez {
-    class Torre:Peca {
+    class Torre : Peca {
         public Torre(tabuleiro tab, Cor cor) : base(tab, cor)
         {
 
@@ -16,5 +16,63 @@ namespace Xadrez.xadrez {
             return "T";
         }
 
+        private bool podeMover(Posicao pos)
+        {
+            Peca p = Tabuleiro.peca(pos);
+            return p == null || p.Cor != Cor;
+        }
+
+        public override bool[,] movimentosPossiveis()
+        {
+            bool[,] mat = new bool[Tabuleiro.linhas, Tabuleiro.colunas];
+
+            Posicao pos = new Posicao(0, 0);
+
+            pos.definirValores(Posicao.linha - 1, Posicao.coluna);
+            while(Tabuleiro.posicaoValida(pos) && podeMover(pos))
+            {
+                mat[pos.linha, pos.coluna] = true;
+                if(Tabuleiro.peca(pos)!=null && Tabuleiro.peca(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.linha = pos.linha - 1;
+            }
+
+            pos.definirValores(Posicao.linha + 1, Posicao.coluna);
+            while (Tabuleiro.posicaoValida(pos) && podeMover(pos))
+            {
+                mat[pos.linha, pos.coluna] = true;
+                if (Tabuleiro.peca(pos) != null && Tabuleiro.peca(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.linha = pos.linha + 1;
+            }
+
+            pos.definirValores(Posicao.linha, Posicao.coluna + 1);
+            while (Tabuleiro.posicaoValida(pos) && podeMover(pos))
+            {
+                mat[pos.linha, pos.coluna] = true;
+                if (Tabuleiro.peca(pos) != null && Tabuleiro.peca(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.coluna = pos.coluna + 1;
+            }
+
+            pos.definirValores(Posicao.linha, Posicao.coluna - 1);
+            while (Tabuleiro.posicaoValida(pos) && podeMover(pos))
+            {
+                mat[pos.linha, pos.coluna] = true;
+                if (Tabuleiro.peca(pos) != null && Tabuleiro.peca(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.coluna = pos.coluna - 1;
+            }
+
+            return mat;
+        }
     }
 }
