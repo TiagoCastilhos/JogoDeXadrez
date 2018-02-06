@@ -191,10 +191,11 @@ namespace Xadrez.xadrez {
                     {
                         if (mat[i, j])
                         {
+                            Posicao origem = x.Posicao;
                             Posicao destino = new Posicao(i, j);
-                            Peca pecaCapturada = executaMovimento(x.Posicao, new Posicao(i, j));
+                            Peca pecaCapturada = executaMovimento(origem, destino);
                             bool testeXeque = estaEmXeque(cor);
-                            desfazMovimento(x.Posicao, destino, pecaCapturada);
+                            desfazMovimento(origem, destino, pecaCapturada);
                             if (!testeXeque)
                             {
                                 return false;
@@ -263,7 +264,7 @@ namespace Xadrez.xadrez {
 
         public void validarPosicaoDeDestino(Posicao origem, Posicao destino)
         {
-            if (!tab.peca(origem).podeMoverPara(destino))
+            if (!tab.peca(origem).movimentoPossivel(destino))
             {
                 throw new TabuleiroException("Posição de destino inválida!");
             }
