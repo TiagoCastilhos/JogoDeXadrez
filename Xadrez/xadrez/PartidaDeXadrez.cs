@@ -14,6 +14,9 @@ namespace Xadrez.xadrez {
         public bool terminada { get; private set; }
         private HashSet<Peca> pecas;
         private HashSet<Peca> capturadas;
+        public bool xeque { get; private set; }
+        
+
 
         public PartidaDeXadrez()
         {
@@ -22,6 +25,7 @@ namespace Xadrez.xadrez {
             jogadorAtual = Cor.Branca;
             colocarPecas();
             terminada = false;
+            xeque = false;
             capturadas = new HashSet<Peca>();
             pecas = new HashSet<Peca>();
             colocarPecas();
@@ -64,6 +68,14 @@ namespace Xadrez.xadrez {
                 desfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Você não pode se colocar em xeque!");
             }
+            if (estaEmXeque(adversaria(jogadorAtual)))
+            {
+                xeque = true;
+            }
+            else
+            {
+                xeque = false;
+            }
 
             turno++;
             mudaJogador();
@@ -76,8 +88,10 @@ namespace Xadrez.xadrez {
             p.decrementarQteMovimentos();
             if (pecaCapturada != null)
             {
-                capturadas.Add(pecaCapturada);
+                tab.colocarPeca(pecaCapturada, destino);
+                capturadas.Remove(pecaCapturada);
             }
+            tab.colocarPeca(p, origem);
         }
 
         private void mudaJogador()
