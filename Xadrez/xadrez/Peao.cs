@@ -16,5 +16,17 @@ namespace Xadrez.xadrez {
         {
             return "P";
         }
+
+        private bool existeInimigo(Posicao pos)
+        {
+            Peca p = Tabuleiro.peca(pos);
+            return p != null && p.Cor != Cor;
+        }
+
+        private bool existeInimigo (Posicao pos)
+        {
+            Peca p = Tabuleiro.peca(pos);
+            return p != null && p.Cor != Cor;
+        }
     }
 }
