@@ -69,12 +69,12 @@ namespace Xadrez.xadrez {
                     Posicao esquerda = new Posicao(Posicao.linha, Posicao.coluna - 1);
                     if (Tabuleiro.posicaoValida(esquerda) && existeInimigo(esquerda) && Tabuleiro.peca(esquerda) == partida.vulneravelEnPassant)
                     {
-                        mat[esquerda.linha, esquerda.coluna] = true;
+                        mat[esquerda.linha - 1, esquerda.coluna] = true;
                     }
                     Posicao direita = new Posicao(Posicao.linha, Posicao.coluna + 1);
                     if (Tabuleiro.posicaoValida(direita) && existeInimigo(direita) && Tabuleiro.peca(direita) == partida.vulneravelEnPassant)
                     {
-                        mat[direita.linha, direita.coluna] = true;
+                        mat[direita.linha - 1, direita.coluna] = true;
                     }
                 }
 
@@ -111,12 +111,12 @@ namespace Xadrez.xadrez {
                     Posicao esquerda = new Posicao(Posicao.linha, Posicao.coluna - 1);
                     if (Tabuleiro.posicaoValida(esquerda) && existeInimigo(esquerda) && Tabuleiro.peca(esquerda) == partida.vulneravelEnPassant)
                     {
-                        mat[esquerda.linha, esquerda.coluna] = true;
+                        mat[esquerda.linha + 1, esquerda.coluna] = true;
                     }
                     Posicao direita = new Posicao(Posicao.linha, Posicao.coluna + 1);
                     if (Tabuleiro.posicaoValida(direita) && existeInimigo(direita) && Tabuleiro.peca(direita) == partida.vulneravelEnPassant)
                     {
-                        mat[direita.linha, direita.coluna] = true;
+                        mat[direita.linha +1, direita.coluna] = true;
                     }
                 }
             }
