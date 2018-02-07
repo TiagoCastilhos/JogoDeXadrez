@@ -7,9 +7,11 @@ using Xadrez.Tabuleiro;
 namespace Xadrez.xadrez {
     class Rei:Peca {
 
-        public Rei(tabuleiro tab, Cor cor):base(tab, cor)
-        {
+        private PartidaDeXadrez partida;
 
+        public Rei(tabuleiro tab, Cor cor, PartidaDeXadrez partida):base(tab, cor)
+        {
+            this.partida = partida;
         }
 
         public override string ToString()

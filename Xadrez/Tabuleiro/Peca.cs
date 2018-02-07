@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xadrez.xadrez;
 namespace Xadrez.Tabuleiro {
     abstract class Peca {
 
@@ -38,7 +38,7 @@ namespace Xadrez.Tabuleiro {
             bool[,] mat = movimentosPossiveis();
             for (int i = 0; i < Tabuleiro.linhas; i++)
             {
-                for(int j = 0; i < Tabuleiro.colunas; j++)
+                for(int j = 0; j < Tabuleiro.colunas; j++)
                 {
                     if (mat[i, j])
                     {
