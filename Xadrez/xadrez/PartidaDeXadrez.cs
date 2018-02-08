@@ -153,9 +153,43 @@ namespace Xadrez.xadrez {
                 {
                     p = tab.RetirarPeca(destino);
                     pecas.Remove(p);
-                    Peca dama = new Dama(tab, p.Cor);
-                    tab.colocarPeca(dama, destino);
-                    pecas.Add(dama);
+                    Console.WriteLine("Esolha a peça para a promoção:");
+                    Console.WriteLine("d - dama\n" +
+                                      "c - cavalo\n" +
+                                      "b - bispo\n" +
+                                      "t - torre\n");
+                    Console.Write("Opção escolhida: ");
+                    char opcao = char.Parse(Console.ReadLine());
+                    switch (opcao)
+                    {
+                        case 'd':
+                            Peca dama = new Dama(tab, p.Cor);
+                            tab.colocarPeca(dama, destino);
+                            pecas.Add(dama);
+                            break;
+
+
+                        case 'c':
+                            Peca cavalo = new Cavalo(tab, p.Cor);
+                            tab.colocarPeca(cavalo, destino);
+                            pecas.Add(cavalo);
+                            break;
+
+                        case 'b':
+                            Peca bispo = new Bispo(tab, p.Cor);
+                            tab.colocarPeca(bispo, destino);
+                            pecas.Add(bispo);
+                            break;
+
+                        case 't':
+                            Peca torre = new Torre(tab, p.Cor);
+                            tab.colocarPeca(torre, destino);
+                            pecas.Add(torre);
+                            break;
+
+
+                    }
+
                 }
             }
 
